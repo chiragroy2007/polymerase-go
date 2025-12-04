@@ -1,6 +1,6 @@
 # Polymerase-go
 
-**High-Performance Computational Biology Platform**
+**High-Performance Computational Biology Platform powered by Poly Library, running on Go**
 
 Polymerase-go is a next-generation bioinformatics suite designed for speed, accuracy, and accessibility. By bridging a modern, responsive **Next.js** frontend with a high-performance **Go** backend, it delivers research-grade sequence analysis tools that run locally with native efficiency.
 
