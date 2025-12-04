@@ -2,85 +2,79 @@
 
 **High-Performance Computational Biology Platform**
 
-Polymerase-go is a next-generation bioinformatics suite designed for speed, accuracy, and accessibility. By bridging a modern, responsive **Next.js** frontend with a high-performance **Go** backend, it delivers research-grade sequence analysis tools that run locally with native efficiency.
+**Live Demo**: [https://polymerase-go.tools.teamneuron.blog](https://polymerase-go.tools.teamneuron.blog)
 
-Powered by the [**poly**](https://github.com/bebop/poly) library, Polymerase-go provides a robust set of utilities for DNA, RNA, and protein manipulation, engineered for students, researchers, and bioengineers who demand reliable computation without the latency of cloud-based services.
+Polymerase-go is a local bioinformatics suite that interfaces a Next.js frontend with a Go-based computational backend. It leverages the `poly` library to provide performant, statically-typed implementations of common biological algorithms, offering an alternative to interpreted language solutions for local sequence analysis.
 
-## 🚀 Why Polymerase-go?
+## Architecture
 
-### **Unmatched Performance**
-Unlike traditional Python-based bioinformatics tools or client-side JavaScript implementations, Polymerase-go offloads heavy computation to a **Go server**. Go's statically typed, compiled nature ensures that algorithms like **Needleman-Wunsch alignment**, **Zuker folding**, and **SeqHash generation** execute with near-instantaneous speed, even for complex datasets.
+The application follows a client-server architecture designed for local execution:
 
-### **Scientific Accuracy**
-Built on top of `poly`, a rigorously tested Go library for engineering organisms, Polymerase-go ensures that every calculation—from reverse complements to codon optimization—adheres to strict biological standards.
+*   **Backend**: A Go HTTP server (`net/http`) that exposes RESTful endpoints. It handles all heavy computational tasks, including sequence alignment (Needleman-Wunsch), secondary structure prediction (Zuker algorithm), and codon optimization.
+*   **Frontend**: A Next.js (React) application serving as the user interface. It communicates with the backend via JSON payloads.
+*   **Core Logic**: Utilizes `github.com/bebop/poly`, a Go package for engineering organisms, ensuring strictly typed and tested biological primitives.
 
-### **Privacy & Security**
-Run your sensitive genetic data locally. No cloud uploads, no API rate limits, and no data dependency. Your research stays on your machine.
+## Features
 
-## 🛠️ Toolset
+### Sequence Manipulation
+*   **Reverse Complement**: Generates reverse complements for DNA/RNA sequences.
+*   **Translation**: Translates nucleotide sequences to protein sequences using standard genetic codes.
 
-| Category | Tool | Description |
-|----------|------|-------------|
-| **Manipulation** | **Reverse Complement** | Generate reverse complements instantly. |
-| | **Translation** | Accurate DNA-to-Protein translation using standard genetic codes. |
-| **Analysis** | **Sequence Alignment** | Global pairwise alignment (Needleman-Wunsch) with configurable scoring. |
-| | **Folding** | Predict RNA/DNA secondary structures and Minimum Free Energy (MFE). |
-| | **Checks** | Verify sequence properties (DNA/RNA type, palindromicity). |
-| **Synthetic Bio** | **Codon Optimization** | Optimize sequences for expression in specific hosts (e.g., *E. coli*). |
-| | **Primer Design** | Automated forward and reverse primer generation for PCR. |
-| **Utilities** | **SeqHash** | Generate unique, reproducible hashes for biological sequences. |
-| | **Random Generator** | Create synthetic DNA/RNA/Protein sequences for testing. |
+### Analysis & Simulation
+*   **Global Alignment**: Performs pairwise sequence alignment using the Needleman-Wunsch algorithm with configurable scoring matrices.
+*   **Secondary Structure Prediction**: Predicts RNA/DNA folding and calculates Minimum Free Energy (MFE) using dynamic programming approaches (Zuker).
+*   **Sequence Verification**: Validates sequence properties including nucleic acid type (DNA/RNA) and palindromicity.
 
-## 💻 Installation & Local Setup
+### Synthetic Biology
+*   **Codon Optimization**: Optimizes coding sequences for expression in specific host organisms (e.g., *E. coli*) based on codon usage tables.
+*   **Primer Design**: Automates the generation of forward and reverse primers for PCR amplification.
 
-Polymerase-go is designed to be run locally on your machine. Follow these steps to get started.
+### Utilities
+*   **SeqHash**: Generates strictly defined, reproducible hashes for biological sequences to ensure identifier consistency.
+*   **Random Sequence Generation**: Produces pseudo-random DNA, RNA, or Protein sequences for testing and simulation purposes.
+
+## Installation
 
 ### Prerequisites
-- **Go** (v1.18 or later): [Download Go](https://go.dev/dl/)
-- **Node.js** (v18 or later): [Download Node.js](https://nodejs.org/)
+*   **Go**: Version 1.18 or higher.
+*   **Node.js**: Version 18 or higher.
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/polymerase-go.git
-cd polymerase-go
-```
+### Local Setup
 
-### 2. Setup the Backend (Go)
-The backend handles all computational logic.
-```bash
-# Install Go dependencies
-go mod tidy
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/chiragroy2007/polymerase-go.git
+    cd polymerase-go
+    ```
 
-# Start the local development server (runs on port 8080)
-go run dev_server.go
-```
-*Keep this terminal window open.*
+2.  **Initialize Backend**
+    The backend runs on port 8080.
+    ```bash
+    go mod tidy
+    go run dev_server.go
+    ```
 
-### 3. Setup the Frontend (Next.js)
-Open a **new terminal window** in the same directory.
-```bash
-# Install Node.js dependencies
-npm install
+3.  **Initialize Frontend**
+    Open a new terminal session. The frontend runs on port 3000.
+    ```bash
+    npm install
+    npm run dev
+    ```
 
-# Start the frontend interface (runs on port 3000)
-npm run dev
-```
+4.  **Access Application**
+    Navigate to `http://localhost:3000` in a web browser.
 
-### 4. Access the Platform
-Open your browser and navigate to:
-**[http://localhost:3000](http://localhost:3000)**
+## Technical Stack
 
-## 🏗️ Architecture
+*   **Language**: Go (Backend), TypeScript (Frontend)
+*   **Framework**: Next.js 14
+*   **Styling**: Tailwind CSS
+*   **Bioinformatics Library**: `bebop/poly`
 
-- **Frontend**: Next.js 14 (React), Tailwind CSS, Lucide Icons.
-- **Backend**: Go (Golang) HTTP Server.
-- **Core Library**: `github.com/bebop/poly` (Bioinformatics logic).
-- **Communication**: REST API (JSON) over HTTP.
+## License
 
-## 🤝 Contributing
-
-We welcome contributions from the scientific community! Whether you're adding a new algorithm from `poly` or refining the UI, please feel free to submit a Pull Request.
+This project is open-source and available under the MIT License.
 
 ---
 
-**Built by Chirag** • **Powered by Poly** • **TeamNeuron Tools**
+**Built by Chirag** | **Powered by Poly** | **TeamNeuron Tools**
