@@ -3,6 +3,7 @@
 **High-Performance Computational Biology Platform powered by Poly Library, running on Go**
 
 **Live Demo**: [https://polymerase-go.tools.teamneuron.blog](https://polymerase-go.tools.teamneuron.blog)
+
 **(Poly)merase Library**: [GitHub Repo](https://github.com/bebop/poly)
 
 Polymerase-go is a local bioinformatics suite that interfaces a Next.js frontend with a Go-based computational backend. It leverages the `poly` library to provide performant, statically-typed implementations of common biological algorithms, offering an alternative to interpreted language solutions for local sequence analysis.
