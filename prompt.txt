@@ -1,0 +1,113 @@
+I want you to generate a fully architected project called Poly WebStudio, built with the following requirements:
+
+1. SUMMARY OF THE PROJECT
+
+Build a modern, professional, minimalistic web application that exposes powerful computational biology tools using the poly Go library.
+
+The tech stack:
+
+Frontend: Next.js (App Router) + React + TailwindCSS
+
+Backend: Serverless API routes written in Go, deployed on Vercel
+
+Bioengine: The github.com/bebop/poly library running in Go
+
+Deployment: Entire project deployable on Vercel with minimal config
+
+The user interacts through the frontend, which calls the Go API endpoints.
+All biological operations are performed by poly on the server, not the browser.
+
+2. FUNCTIONAL REQUIREMENTS
+
+Implement the following API endpoints (all using poly internally):
+
+/api/revcomp (POST)
+Input: DNA sequence
+Output: reverse complement sequence
+
+/api/codon-optimize (POST)
+Input: DNA sequence + target organism
+Output: codon-optimized sequence
+
+/api/align (POST)
+Input: two DNA/protein sequences
+Output: global alignment score + aligned sequences
+
+/api/translate (POST)
+Input: DNA sequence
+Output: translated protein sequence
+
+/api/primer-design (POST)
+Input: DNA sequence
+Output: forward + reverse primers
+
+Each API endpoint must:
+
+parse JSON input
+
+run the appropriate poly functions
+
+return JSON output
+
+handle invalid sequences gracefully
+
+
+3. FRONTEND REQUIREMENTS
+UI Style
+
+Clean, modern, minimalistic
+
+Neutral colors, no fancy gradients
+
+Google-like simplicity, but professional
+
+Responsive layout, easy on eyes
+
+Light mode default
+
+Consistent spacing and readable typography
+
+No unnecessary animations or fancy effects
+
+UI Sections
+
+Build the following pages:
+
+Home page
+
+Simple overview of tools (cards)
+
+Professional tagline: "High-performance bioinformatics tools powered by poly."
+
+Tool pages
+
+Each tool gets its own page:
+
+Reverse Complement
+
+Codon Optimization
+
+Alignment
+
+Translation
+
+Primer Design
+
+Each page contains:
+
+A clean input panel (textarea or fields)
+
+A “Run Tool” button
+
+Output in a monospace viewer
+
+Validation messages
+
+Loading states
+
+Error handling
+
+All frontend interaction should be very smooth, simple, and structured.
+
+
+Use the best and efficient file strucutre!
