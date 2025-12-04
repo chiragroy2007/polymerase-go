@@ -1,6 +1,6 @@
 # Polymerase-go
 
-**High-Performance Computational Biology Platform**
+**High-Performance Computational Biology Platform powered by Poly Library, running on Go**
 
 **Live Demo**: [https://polymerase-go.tools.teamneuron.blog](https://polymerase-go.tools.teamneuron.blog)
 
