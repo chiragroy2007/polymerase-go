@@ -4,7 +4,7 @@
 
 **Polymerase-go** is a high-performance, open-source computational biology workbench. Built for speed and rigorous scientific accuracy, it provides a tailored suite of tools for synthetic biology, sequence analysis, and DNA manipulation.
 
-Whether you are a student learning the ropes of genetic engineering or a researcher needing quick, reliable sequence operations, Polymerase-go offers a streamlined, "human-first" interface backed by the lightning-fast Go `poly` library.
+Whether you are a student learning the ropes of genetic engineering or a researcher needing quick, reliable sequence operations, Polymerase-go offers a streamlined, easy-to-use interface backed by the super-fast Go `poly` library.
 
 ---
 
