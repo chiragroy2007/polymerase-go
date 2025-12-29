@@ -1,6 +1,6 @@
 # Polymerase-go
 
-![Polymerase-go Banner](https://raw.githubusercontent.com/bebop/presskit/main/gopher.png) <!-- scalable logo placeholder -->
+<img src="https://raw.githubusercontent.com/bebop/presskit/main/gopher.png" width="150" alt="Polymerase-go Banner">
 
 **Polymerase-go** is a high-performance, open-source computational biology workbench. Built for speed and rigorous scientific accuracy, it provides a tailored suite of tools for synthetic biology, sequence analysis, and DNA manipulation.
 
