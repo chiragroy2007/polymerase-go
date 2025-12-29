@@ -3,6 +3,7 @@ package checks
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/bebop/poly/checks"
 )
@@ -12,10 +13,11 @@ type ChecksRequest struct {
 }
 
 type ChecksResponse struct {
-	IsDNA         bool `json:"is_dna"`
-	IsRNA         bool `json:"is_rna"`
-	IsPalindromic bool `json:"is_palindromic"`
-	Error         string `json:"error,omitempty"`
+	IsDNA         bool    `json:"is_dna"`
+	IsRNA         bool    `json:"is_rna"`
+	IsPalindromic bool    `json:"is_palindromic"`
+	GcContent     float64 `json:"gc_content"`
+	Error         string  `json:"error,omitempty"`
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -35,22 +37,19 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// checks.IsDNA and IsRNA might not exist directly as simple bool checks in all versions, 
-	// but based on docs they seem to be there.
-	// IsPalindromic returns bool.
-	
-	// Note: checks.IsDNA might return error or bool. 
-	// I'll assume bool based on typical Go patterns for "Is...".
-	// If compilation fails, I'll fix.
-	
+	// Normalize sequence to uppercase as poly/checks functions (IsDNA, IsRNA) are case-sensitive
+	req.Sequence = strings.ToUpper(req.Sequence)
+
 	isDNA := checks.IsDNA(req.Sequence)
 	isRNA := checks.IsRNA(req.Sequence)
 	isPalindromic := checks.IsPalindromic(req.Sequence)
+	gcContent := checks.GcContent(req.Sequence)
 
 	resp := ChecksResponse{
 		IsDNA:         isDNA,
 		IsRNA:         isRNA,
 		IsPalindromic: isPalindromic,
+		GcContent:     gcContent,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

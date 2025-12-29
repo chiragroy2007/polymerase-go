@@ -18,7 +18,7 @@ export default function ChecksPage() {
         }
 
         const data = await response.json();
-        return `Is DNA: ${data.is_dna}\nIs RNA: ${data.is_rna}\nIs Palindromic: ${data.is_palindromic}`;
+        return `Is DNA: ${data.is_dna}\nIs RNA: ${data.is_rna}\nIs Palindromic: ${data.is_palindromic}\nGC Content: ${(data.gc_content * 100).toFixed(2)}%`;
     };
 
     return (
