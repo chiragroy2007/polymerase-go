@@ -38,7 +38,22 @@ export default function RandomPage() {
             inputLabel="Length (default 100)"
             inputPlaceholder="100"
             onRun={handleRun}
-            outputLabel="Generated Sequence"
-        />
+        >
+            <div className="mt-12 border-t pt-8">
+                <h2 className="text-xl font-semibold mb-4 text-gray-900">How to Use</h2>
+                <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-600">
+                    <div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Random Generator</h3>
+                        <p>
+                            Creates synthetic DNA sequences of a specified length.
+                        </p>
+                        <ul className="list-disc pl-5 mt-2 space-y-1">
+                            <li><strong>Input:</strong> Enter the desired length (integer). Defaults to 100 bp if empty.</li>
+                            <li><strong>Composition:</strong> Generates ~25% distribution of A, C, G, T.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </ToolLayout>
     );
 }

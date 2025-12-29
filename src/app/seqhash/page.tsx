@@ -28,7 +28,23 @@ export default function SeqHashPage() {
             inputLabel="DNA Sequence"
             inputPlaceholder="ATGC..."
             onRun={handleRun}
-            outputLabel="SeqHash"
-        />
+        >
+            <div className="mt-12 border-t pt-8">
+                <h2 className="text-xl font-semibold mb-4 text-gray-900">How to Use</h2>
+                <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-600">
+                    <div>
+                        <h3 className="font-semibold text-gray-900 mb-2">SeqHash Algorithm</h3>
+                        <p>
+                            Generates a consistent, collision-resistant identifier for your sequence.
+                            Useful for database deduplication.
+                        </p>
+                        <ul className="list-disc pl-5 mt-2 space-y-1">
+                            <li><strong>Stable:</strong> The hash is deterministic.</li>
+                            <li><strong>Algorithm:</strong> Uses SHA-256 with specific normalization (e.g. upper-casing).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </ToolLayout>
     );
 }

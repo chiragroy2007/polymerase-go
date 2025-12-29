@@ -1,132 +1,87 @@
+"use client";
+
 import Link from "next/link";
 
 export default function Home() {
-  const tools = [
+  const categories = [
     {
-      name: "Reverse Complement",
-      description: "Generate the reverse complement of a DNA sequence.",
-      href: "/revcomp",
-      category: "Sequence Manipulation",
+      name: "Analysis",
+      tools: [
+        { name: "Sequence Search", description: "Advanced search (BWT) and comparison (Mash).", href: "/search" },
+        { name: "Global & Local Align", description: "Needleman-Wunsch & Smith-Waterman alignment.", href: "/align" },
+        { name: "Sequence Checks", description: "Validate GC content, palindromes, and more.", href: "/checks" },
+        { name: "Alphabet Validator", description: "Strict validation against DNA/RNA/Protein tables.", href: "/alphabet" },
+        { name: "Folding", description: "Predict secondary structures (MFE).", href: "/fold" },
+        { name: "SeqHash", description: "Generate unique stable hashes for sequences.", href: "/seqhash" },
+      ]
     },
     {
-      name: "Codon Optimization",
-      description: "Optimize DNA sequences for expression in specific organisms.",
-      href: "/codon-optimize",
-      category: "Synthetic Biology",
+      name: "Manipulation",
+      tools: [
+        { name: "Sequence Transform", description: "Reverse, Complement, and IUPAC variant expansion.", href: "/transform" },
+        { name: "Translation", description: "Translate DNA/RNA to Protein.", href: "/translate" },
+        { name: "Random Generator", description: "Generate random biological sequences.", href: "/random" },
+        { name: "Reverse Complement", description: "Simple reverse complement tool.", href: "/revcomp" },
+      ]
     },
     {
-      name: "Sequence Alignment",
-      description: "Perform global alignment between two sequences.",
-      href: "/align",
-      category: "Analysis",
+      name: "Synthetic Biology",
+      tools: [
+        { name: "Golden Gate Assembly", description: "Simulate Type IIS restriction cloning.", href: "/clone" },
+        { name: "Codon Optimization", description: "Optimize sequences for host expression.", href: "/codon-optimize" },
+        { name: "Primer Design", description: "Create PCR primers with Tm calculation.", href: "/primer-design" },
+      ]
     },
     {
-      name: "Translation",
-      description: "Translate DNA sequences into protein sequences.",
-      href: "/translate",
-      category: "Sequence Manipulation",
-    },
-    {
-      name: "Primer Design",
-      description: "Design forward and reverse primers for PCR.",
-      href: "/primer-design",
-      category: "Synthetic Biology",
-    },
-    {
-      name: "Random Generator",
-      description: "Generate random DNA, RNA, or Protein sequences.",
-      href: "/random",
-      category: "Utilities",
-    },
-    {
-      name: "SeqHash",
-      description: "Generate unique hashes for biological sequences.",
-      href: "/seqhash",
-      category: "Utilities",
-    },
-    {
-      name: "Sequence Checks",
-      description: "Check properties like DNA/RNA type and palindromicity.",
-      href: "/checks",
-      category: "Analysis",
-    },
-    {
-      name: "Folding",
-      description: "Predict secondary structure and minimum free energy.",
-      href: "/fold",
-      category: "Analysis",
-    },
+      name: "Utilities",
+      tools: [
+        { name: "Universal Converter", description: "Convert FASTA, GenBank, FASTQ, GFF, PolyJSON.", href: "/io" },
+      ]
+    }
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
       <div className="border-b border-gray-200 pb-5">
-        <h3 className="text-lg leading-6 font-medium text-gray-900">
-          Available Tools
+        <h3 className="text-xl leading-6 font-semibold text-gray-900">
+          Polymerase-Go Workbench
         </h3>
         <p className="mt-2 max-w-4xl text-sm text-gray-500">
-          Polymerase-Go delivers advanced sequence analysis through a fast, Go-powered backend and a clean, accessible UI. A minimal, professional interface for running research-level DNA/RNA/protein workflows effortlessly. Designed for students, researchers, and engineers who need accurate, reliable biological computation on demand.
+          A high-performance suite of biological engineering tools running on a Go backend.
         </p>
       </div>
 
-      <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Tool Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Category
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Description
-                    </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      <span className="sr-only">Open</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {tools.map((tool) => (
-                    <tr key={tool.href} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        <Link href={tool.href} className="hover:underline">
-                          {tool.name}
-                        </Link>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                          {tool.category}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {tool.description}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link href={tool.href} className="text-slate-900 hover:text-slate-700">
-                          Open &rarr;
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      <div className="grid gap-10">
+        {categories.map((category) => (
+          <div key={category.name}>
+            <h4 className="text-lg font-medium text-gray-900 mb-4 px-2 border-l-4 border-indigo-500">
+              {category.name}
+            </h4>
+            <div className="bg-white shadow overflow-hidden sm:rounded-md border border-gray-200">
+              <ul role="list" className="divide-y divide-gray-200">
+                {category.tools.map((tool) => (
+                  <li key={tool.name}>
+                    <Link href={tool.href} className="block hover:bg-gray-50 transition duration-150 ease-in-out">
+                      <div className="px-4 py-4 sm:px-6 flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-indigo-600 truncate">{tool.name}</p>
+                          <p className="mt-1 flex items-center text-sm text-gray-500">
+                            {tool.description}
+                          </p>
+                        </div>
+                        <div className="ml-5 flex-shrink-0">
+                          <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
